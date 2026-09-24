@@ -1,0 +1,24 @@
+﻿services:
+  openships-api:
+    image: openships-api
+    build:
+      context: .
+      dockerfile: OpenShips-API/Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      ConnectionStrings__Default: "Host=postgres;Port=5432;Database=aisdb;Username=aisuser;Password=password"
+
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: aisdb
+      POSTGRES_USER: aisuser
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

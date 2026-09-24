@@ -1,0 +1,51 @@
+@OpenShips_API_HostAddress = http://localhost:5018
+@ApiVersion = 1
+@MMSI = 211188000
+@UnLocode = DE/HAM
+@BoundingBox = ?minLat=50&minLon=8&maxLat=51&maxLon=9
+@PortId = 1
+
+GET {{OpenShips_API_HostAddress}}/api/v{{ApiVersion}}/vessels/position/current/{{MMSI}}
+Accept: application/json
+
+###
+
+GET {{OpenShips_API_HostAddress}}/api/v{{ApiVersion}}/vessels/position/current/box{{BoundingBox}}
+Accept: application/json
+
+###
+
+GET {{OpenShips_API_HostAddress}}/api/v{{ApiVersion}}/vessels/details/{{MMSI}}
+Accept: application/json
+
+###
+
+GET {{OpenShips_API_HostAddress}}/api/v{{ApiVersion}}/vessels/position/track/{{MMSI}}?from=2026-08-22T12:00:00Z&to=2026-09-22T22:00:00Z&limit=10&minIntervalSeconds=60
+Accept: application/json
+
+###
+
+GET {{OpenShips_API_HostAddress}}/api/v{{ApiVersion}}/ports/{{UnLocode}}
+Accept: application/json
+
+###
+
+GET {{OpenShips_API_HostAddress}}/api/v1.0/ports/timezone/{{UnLocode}}
+Accept: application/json
+
+###
+
+GET {{OpenShips_API_HostAddress}}/api/v1.0/ports/locode/{{PortId}}
+Accept: application/json
+
+###
+
+GET {{OpenShips_API_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{OpenShips_API_HostAddress}}/health/ais
+Accept: application/json
+
+###
